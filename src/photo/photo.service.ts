@@ -4,7 +4,7 @@ import { Photo } from './photo.entity';
 
 @Injectable()
 export class PhotoService {
-  constructor(@Inject('PhotoRepositoryToken')
+  constructor(@Inject('photoRepository')
               private readonly photoRepository: Repository<Photo>) {
   }
 

@@ -1,7 +1,7 @@
 import { createConnection } from 'typeorm';
 
 export const databaseProviders = [{
-  provide: 'DbConnectionToken',
+  provide: 'databaseConnection',
   useFactory: async () => await createConnection({
     type: 'mysql',
     host: 'localhost',

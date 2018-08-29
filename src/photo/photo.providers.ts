@@ -1,8 +1,8 @@
-import { Connection, Repository } from 'typeorm';
+import { Connection } from 'typeorm';
 import { Photo } from './photo.entity';
 
 export const photoProviders = [{
-  provide: 'PhotoRepositoryToken',
+  provide: 'photoRepository',
   useFactory: (connection: Connection) => connection.getRepository(Photo),
-  inject: ['DbConnectionToken'],
+  inject: ['databaseConnection'],
 }];
