@@ -1,19 +1,20 @@
 import { createConnection } from 'typeorm';
+import { MySQLConfig } from '../config';
 
 export const databaseProviders = [{
   provide: 'databaseConnection',
   useFactory: async () => await createConnection({
     type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '123',
-    database: 'pi_book_keeping',
+    host: MySQLConfig.MYSQL_HOST,
+    port: MySQLConfig.MYSQL_PORT,
+    username: MySQLConfig.MYSQL_USERNAME,
+    password: MySQLConfig.MYSQL_PASSWORD,
+    database: MySQLConfig.MYSQL_DATABASE,
     charset: 'utf8',
     entities: [
       __dirname + '/../**/*.entity{.ts,.js}',
     ],
     synchronize: true,
-    logging: 'all',
+    logging: MySQLConfig.MYSQL_LOGGER,
   }),
 }];

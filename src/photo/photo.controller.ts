@@ -10,13 +10,13 @@ export class PhotoController {
   }
 
   @Get()
-  findAll(): Promise<Photo[]> {
-    console.log('find all photos');
-    return this.photoService.findAll();
+  async findAll(): Promise<Photo[]> {
+    console.log('find all photos', await this.photoService.findAll());
+    return await this.photoService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id', new ParseIntPipe())id): Promise<Photo> {
-    return this.photoService.findOne(id);
+  async findOne(@Param('id', new ParseIntPipe())id): Promise<Photo> {
+    return await this.photoService.findOne(id);
   }
 }
